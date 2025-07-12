@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Assistant Agent - Documentation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f9fa; color: #222; }
+        .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 32px 40px; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+        h1, h2, h3 { color: #2a4d7a; }
+        ul, ol { margin-left: 1.5em; }
+        code, pre { background: #f3f3f3; padding: 2px 6px; border-radius: 4px; }
+        .section { margin-bottom: 2.5em; }
+        a { color: #1a73e8; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer { margin-top: 3em; color: #888; font-size: 0.95em; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Research Assistant Agent</h1>
+        <p><strong>Version:</strong> 1.0.0<br>
+        <strong>License:</strong> MIT</p>
+
+        <div class="section">
+            <h2>Overview</h2>
+            <p>The Research Assistant Agent is an AI-powered assistant that leverages advanced language models and the Tavily search API to provide real-time, internet-enabled research capabilities. Designed for professionals, researchers, and students, this tool enables seamless access to up-to-date information and intelligent conversation.</p>
+        </div>
+
+        <div class="section">
+            <h2>Open Source Tools Used</h2>
+            <ul>
+                <li><a href="https://github.com/microsoft/autogen" target="_blank">AutoGen</a>: Framework for building LLM-powered agents and tools.</li>
+                <li><a href="https://github.com/tavily/tavily-python" target="_blank">Tavily Python SDK</a>: Python client for the Tavily search API.</li>
+                <li><a href="https://github.com/pydantic/pydantic" target="_blank">Pydantic</a>: Data validation and settings management using Python type annotations.</li>
+                <li><a href="https://github.com/theskumar/python-dotenv" target="_blank">python-dotenv</a>: Loads environment variables from a <code>.env</code> file.</li>
+                <li><a href="https://github.com/groq/groq-python" target="_blank">Groq Python SDK</a>: Python client for interacting with Groq's language models.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Conversational AI:</strong> Interact with a state-of-the-art language model for research and information retrieval.</li>
+                <li><strong>Internet Search Integration:</strong> Utilizes the Tavily API to fetch and summarize relevant web content.</li>
+                <li><strong>Customizable Search:</strong> Supports adjustable search depth and result limits for tailored information needs.</li>
+                <li><strong>Environment Variable Support:</strong> Securely manage API keys and configuration using <code>.env</code> files.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Requirements</h2>
+            <ul>
+                <li>Python 3.8+</li>
+                <li>API keys for <a href="https://groq.com/" target="_blank">Groq</a> and <a href="https://www.tavily.com/" target="_blank">Tavily</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Installation</h2>
+            <ol>
+                <li><strong>Clone the Repository</strong><br>
+                    <pre>git clone &lt;repository-url&gt;
+cd research-assistant-agent-main_old</pre>
+                </li>
+                <li><strong>Install Dependencies</strong><br>
+                    <pre>pip install -r requirements.txt</pre>
+                </li>
+                <li><strong>Set Up Environment Variables</strong><br>
+                    Create a <code>.env</code> file in the project root with the following content:
+                    <pre>GROQ_API_KEY=your_groq_api_key
+TAVILY_API_KEY=your_tavily_api_key</pre>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Usage</h2>
+            <p>Run the main script to start the assistant:</p>
+            <pre>python main.py</pre>
+            <p>You can interact with the assistant via the command line. Type your research queries and receive summarized, relevant results. To exit, type <code>exit</code>, <code>quit</code>, or <code>bye</code>.</p>
+        </div>
+
+        <div class="section">
+            <h2>Configuration</h2>
+            <ul>
+                <li><strong>Language Model:</strong> Configured in <code>core/llm_config.py</code> via the <code>llm_config</code> dictionary. Default model is <code>gemma2-9b-it</code>.</li>
+                <li><strong>Search Parameters:</strong> Adjust <code>max_results</code> and <code>search_depth</code> in the Tavily search input model in <code>core/tavily_search.py</code> as needed.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>File Structure</h2>
+            <ul>
+                <li><code>main.py</code> — Main application logic and agent setup</li>
+                <li><code>core/tavily_search.py</code> — Tavily search logic and input model</li>
+                <li><code>core/llm_config.py</code> — Language model configuration</li>
+                <li><code>requirements.txt</code> — Python dependencies</li>
+                <li><code>README.md</code> — Product documentation</li>
+                <li><code>documentation.html</code> — HTML file</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>License</h2>
+            <p>This project is released under the MIT License.</p>
+        </div>
+
+        <div class="section">
+            <h2>Contact</h2>
+            <p>For support or inquiries, please contact the maintainer at <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 Research Assistant Agent. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
