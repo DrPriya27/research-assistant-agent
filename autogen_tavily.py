@@ -1,64 +1,10 @@
-#https://www.zinyando.com/coding-your-first-autogen-tool-tavily-search-walkthrough/
-
-import os
-from typing import Annotated
-from tavily import TavilyClient
-from pydantic import BaseModel, Field
 from autogen import register_function, ConversableAgent
 from dotenv import load_dotenv
+from core.tavily_search import tavily_search
+from core.llm_config import llm_config
 
 # Load environment variables
 load_dotenv()
-
-# Configure the language model
-llm_config = {
-    "config_list": [
-        {
-            "model": "gemma2-9b-it",
-            "api_key": os.getenv("GROQ_API_KEY"),
-            "api_type": "groq",
-        }
-    ]
-}
-
-
-# Define the input model for Tavily search
-class TavilySearchInput(BaseModel):
-    query: Annotated[str, Field(description="The search query string")]
-    max_results: Annotated[
-        int, Field(description="Maximum number of results to return", ge=1, le=10)
-    ] = 5
-    search_depth: Annotated[
-        str,
-        Field(
-            description="Search depth: 'basic' or 'advanced'",
-            choices=["basic", "advanced"],
-        ),
-    ] = "basic"
-
-
-# Function to perform Tavily search
-def tavily_search(
-    input: Annotated[TavilySearchInput, "Input for Tavily search"]
-) -> str:
-    # Initialize the Tavily client with your API key
-    client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
-
-    # Perform the search
-    response = client.search(
-        query=input.query,
-        max_results=input.max_results,
-        search_depth=input.search_depth,
-    )
-
-    # Format the results
-    formatted_results = []
-    for result in response.get("results", []):
-        formatted_results.append(
-            f"Title: {result['title']}\nURL: {result['url']}\nContent: {result['content']}\n"
-        )
-
-    return "\n".join(formatted_results)
 
 
 # Create an assistant agent that can use the Tavily search tool
